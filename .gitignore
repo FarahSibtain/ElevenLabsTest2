@@ -70,3 +70,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/ElevenLabsTest2/Library
+/ElevenLabsTest2/Temp
+/ElevenLabsTest2/Logs
+/ElevenLabsTest2/obj
+ElevenLabsTest2/.collabignore

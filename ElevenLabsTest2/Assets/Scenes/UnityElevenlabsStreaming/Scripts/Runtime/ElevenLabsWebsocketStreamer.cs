@@ -49,10 +49,11 @@ namespace Doubtech.ElevenLabs.Streaming
         private void PcmReader(float[] data)
         {
             if (null == audioBuffer || audioBuffer.Length == 0) return;
-            
+
             // Create a binary reader for the memory buffer
-            using (BinaryReader reader = new BinaryReader(audioBuffer))
-            {
+            //using (BinaryReader reader = new BinaryReader(audioBuffer))
+            BinaryReader reader = new BinaryReader(audioBuffer);
+            //{
                 for (int i = 0; i < data.Length; i++)
                 {
                     if (audioBuffer.Position < audioBuffer.Length)
@@ -68,7 +69,7 @@ namespace Doubtech.ElevenLabs.Streaming
                         data[i] = 0f;
                     }
                 }
-            }
+            //}
 
             if(audioBuffer.Position >= audioBuffer.Length) audioBuffer.SetLength(0);
         }
@@ -196,7 +197,10 @@ namespace Doubtech.ElevenLabs.Streaming
                 {
                     byte[] audioData = System.Convert.FromBase64String(data.audio);
                     audioBuffer.Write(audioData);
+                    audioBuffer.Position = 0;
                     Debug.Log("Added audio data");
+
+                    audioSource.Play();
                 }
             };
             ws.OnOpen += OnOpen;
